@@ -70,13 +70,12 @@ openai-ft -t reddit-cleanjokes-train.jsonl --val reddit-cleanjokes-test.jsonl -e
 Tokens can be roughly thought of as words. Before the text input is passed on, it is tokenized where the sentences are split into words. You can read more about it [here](https://towardsdatascience.com/byte-pair-encoding-the-dark-horse-of-modern-nlp-eb36c7df4f10)
 
 ### Epoch 
-An epoch is the number of times the model passes over your data. So if ```num-epochs``` is set to 5, the model in total will go 5 times over each single training example. 
+An epoch is the number of times the model passes over your data. So if ```num-epochs``` is set to 5, the model in total will go 5 times over each training example. 
 
-Different number of epochs will give different results. For example if you have a little data (100,000 sentences) and train it for 100 epochs, you will lose almost 
-everything the pre-trained model has learned and it will memorize your input instead of learning from it. This is called overfitting. For the GPT-3 family a 1-5 epochs are enough for most use cases
-unless you have a lot of training data. 
+Different number of epochs will give different results. For example if you have little data (100,000 sentences) and train it for 100 epochs, you will lose almost 
+everything the pre-trained model has learned and it will memorize your input instead of learning from it. This is called overfitting. For the GPT-3 family a 1-5 epochs are enough for most use cases unless you have a lot of training data. 
 
-If possible, playing around with the number of epochs will do good. 
+If possible, playing around with the number of epochs.
 
 ### Batch Size
 Since almost all datasets are too large to be fit in a single go, it is split into batches. Batch size is how big each part is. 
@@ -87,5 +86,5 @@ your training is completed. You can increase your batch size to increase speed, 
 
 ### Learning Rate
 Learning rate determines how fast the model changes/adapts. If you have a small dataset, it is better to try out smaller learning rates using the ```-s``` argument. 
-For example, too decrease the learning rate by 10x , use ```--s 0.1```
+For example, to decrease the learning rate by 10x , use ```--s 0.1```
 
