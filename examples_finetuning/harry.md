@@ -13,7 +13,7 @@ The data was extracted from PDF copies of Harry Potter. My first approach was to
  ```
  This gave okay results but I thought it was better to have it in the form of a ```text_list``` where one element resembles a prompt and the other its completion. Here's how the data looked: 
  ```python
- [{'data': {'text_list': ["Starting of Page-2",
+ [{'data': {'text_list': ["Starting of Page-1",
     "Remaining Part of Page-1"],
    'loss_weights': [0.3, 0.7]}},
  {'data': {'text_list': ['Starting of Page-2',
