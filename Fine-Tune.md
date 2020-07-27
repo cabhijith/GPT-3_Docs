@@ -40,7 +40,7 @@ Another example:
 Here the question is given little importance, while the answer is given much more. Alternatively, if you want to generate questions given an answer, flip the weights.
 
 ## Fine-Tuning 
-Before continuing, have to have an API key and an engine sanctioned to you. Click [here](https://forms.gle/KjuDoMk21YusDUNM6) to get access to a training engine. 
+Before continuing, have to have an API key and an engine sanctioned to you. Click [here](https://forms.gle/KjuDoMk21YusDUNM6) to get access to a training engine. Set your API key as environmental variable like this ```env OPENAI_API_KEY=sk-mxxxxxxxxxxxxxxxxxxxxxxxxx1```
 
 Fine-tuning is done with the ```openai-finetune``` package. 
 ```python
@@ -64,8 +64,22 @@ openai-ft -t reddit-cleanjokes-train.jsonl --val reddit-cleanjokes-test.jsonl -e
 
 ```-num-completions``` - Number of completions to be generated. 
 
-## Terminologies/Concepts
+## Other Parameters
+```--v``` - For increased verbosity. 
 
+```--snapshots-every 15``` - Number of steps a snapshot has to be taken. A snapshot is basically capturing the weights of the model at that time (step) and saving it forever. By taking snapshots you can further finetune them and/or use it for inference. You can find the snapshot ids in the logs outputted. Here's how it will look: ```Created snapshot ada:2020-05-03.snap-09HczpZn5OzIX70imZYslzMI```
+
+## Inference 
+Once you have fine-tuned one of the models on your data, you can get predictions from it! Here's how to get inference in python: 
+```python 
+engine = 'ada-louise-thomas-ft-c2'
+model = 'ada:2020-05-03.snap-O4HcZMZn5OzZX70imZPalzSI #ID of the snapshot you want to get inference from 
+prompt = """Standing in the doorway, she stared at the empty hallways. Suddenly"""
+
+a = openai.Completion.create(engine=engine, model=model, prompt=prompt)
+print(a['choices'][0]['text'])
+```
+## Terminologies/Concepts
 ### Tokens 
 Tokens can be roughly thought of as words. Before the text input is passed on, it is tokenized where the sentences are split into words. You can read more about it [here](https://towardsdatascience.com/byte-pair-encoding-the-dark-horse-of-modern-nlp-eb36c7df4f10)
 
