@@ -73,11 +73,15 @@ openai-ft -t reddit-cleanjokes-train.jsonl --val reddit-cleanjokes-test.jsonl -e
 Once you have fine-tuned one of the models on your data, you can get predictions from it! Here's how to get inference in python: 
 ```python 
 engine = 'ada-louise-thomas-ft-c2'
-model = 'ada:2020-05-03.snap-O4HcZMZn5OzZX70imZPalzSI #ID of the snapshot you want to get inference from 
+model = 'ada:2020-05-03.snap-O4HcZMZn5OzZX70imZPalzSI' #ID of the snapshot you want to get inference from 
 prompt = """Standing in the doorway, she stared at the empty hallways. Suddenly"""
 
 a = openai.Completion.create(engine=engine, model=model, prompt=prompt)
 print(a['choices'][0]['text'])
+```
+Same request in cURL: 
+```
+curl -H "Authorization: Bearer $OPENAI_API_KEY" -H "Content-Type: application/json" https://api.openai.com/v1/engines/ada-abhijith-chandran-ft-c2/completions -d '{"model":"ada:2020-05-03.snap-O4HcZMZn5OzZX70imZPalzSI", "prompt": "Standing in the doorway, she stared at the empty hallways. Suddenly"}'    
 ```
 ## Terminologies/Concepts
 ### Tokens 
