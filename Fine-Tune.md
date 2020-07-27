@@ -19,7 +19,7 @@ The format for the data is ```{data : "<DATA>"}```, where ```<DATA>``` is:
 
 ```foo```, a string 
 
-```"text_list" : ["foo", "bar"]}```, a list 
+```"text_list" : ["foo", "bar"]```, a list 
 
 ```"text_list" : ["foo", "bar"], "loss_weights" : [0.1, 1]}```, a list with corresponding weights for each of the element of list. 
 
